@@ -91,5 +91,12 @@ void drawMatch(cv::Mat image, cv::Mat points) {
 }
 
 void printhelp() {
-	// TODO
+	std::cout << "Usage: qrcam [OPTIONS]" << std::endl;
+	std::cout << "" << std::endl;
+	std::cout << "Options:" << std::endl;
+	std::cout << "\t-o:\t\tread one code and exit the program automatically" << std::endl;
+	std::cout << "\t-h:\t\tPrint this help site" << std::endl;
+	std::cout << "\t-v ID\t\tSelect video devide with the id ID (Default ID = 0)" << std::endl;
+	std::cout << "\t-w NAME\t\tSets the Window Name to NAME (Default = Camera)" << std::endl;
+	std::cout << "" << std::endl;
 }
