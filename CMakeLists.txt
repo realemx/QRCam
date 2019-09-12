@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project( QRScanner )
+project( QRCam )
 find_package( OpenCV REQUIRED )
 # If the package has been found, several variables will
 # be set, you can find the full list with descriptions
@@ -10,5 +10,5 @@ message(STATUS "    version: ${OpenCV_VERSION}")
 message(STATUS "    libraries: ${OpenCV_LIBS}")
 message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 include_directories( ${OpenCV_INCLUDE_DIRS} )
-add_executable( qrs qrscanner.cpp )
-target_link_libraries( qrs ${OpenCV_LIBS} )
+add_executable( qrcam qrcam.cpp )
+target_link_libraries( qrcam ${OpenCV_LIBS} )
