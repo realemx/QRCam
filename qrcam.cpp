@@ -1,19 +1,21 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/imgproc.hpp>
 #include <opencv2/core/types.hpp>
+#include "qrcam.h"
 
 using namespace cv;
 using namespace std;
 
-void drawMatch(Mat &image, Mat &points)
-{
+
+
+void drawMatch(Mat image, Mat points) {
 	int n = points.rows;
 	for(int i = 0 ; i < n ; i++)
 	{
 		line(image,
-				Point(points.at<float>(i, 0), points.at<float>(i, 1)),
-				Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1)),
-				Scalar(0, 0, 255), 3);
+			 Point(points.at<float>(i, 0), points.at<float>(i, 1)),
+			 Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1)),
+			 Scalar(0, 0, 255), 3);
 	}
 }
 
