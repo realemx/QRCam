@@ -7,18 +7,6 @@ using namespace cv;
 using namespace std;
 
 
-
-void drawMatch(Mat image, Mat points) {
-	int n = points.rows;
-	for(int i = 0 ; i < n ; i++)
-	{
-		line(image,
-			 Point(points.at<float>(i, 0), points.at<float>(i, 1)),
-			 Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1)),
-			 Scalar(0, 0, 255), 3);
-	}
-}
-
 int main(int argc, char* argv[] )
 {
 	VideoCapture stream1(0);
@@ -39,8 +27,9 @@ int main(int argc, char* argv[] )
 		stream1.read(inFrame);
 
 		if(qrDecoder.detect(inFrame, points)) {
-			cout << qrDecoder.decode(inFrame, points)
-			<< "                                                                                                  \r"; // making sure the line is clean
+			cout << "\r" << qrDecoder.decode(inFrame, points);
+			// making sure the line is clean by printing a lot of whitespaces
+			cout << "                                                                                                 ";
 			drawMatch(inFrame, points);
 		}
 
@@ -54,4 +43,15 @@ int main(int argc, char* argv[] )
 
 	cout << endl;
 	return 0;
+}
+
+void drawMatch(Mat image, Mat points) {
+	int n = points.rows;
+	for(int i = 0 ; i < n ; i++)
+	{
+		line(image,
+			 Point(points.at<float>(i, 0), points.at<float>(i, 1)),
+			 Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1)),
+			 Scalar(0, 0, 255), 3);
+	}
 }
