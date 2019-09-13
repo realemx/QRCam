@@ -72,12 +72,13 @@ int main(int argc, char* argv[] ) {
 
 		if(qrDecoder.detect(inFrame, points)) {
 			qrString = qrDecoder.decode(inFrame, points);
-			std::cout << "\r" << qrString;
-			// making sure the line is clean by printing a lot of whitespaces
-			std::cout << "                                                                                            ";
-			//Draw outlines on the colored image
-			drawMatch(outFrame, points);
+
 			if (!qrString.empty()) {
+				//Draw outlines on the colored image
+				drawMatch(outFrame, points);
+				std::cout << "\r" << qrString;
+				// making sure the line is clean by printing a lot of whitespaces
+				std::cout << "                                                                                            ";
 				readQR = true;
 			}
 		}
