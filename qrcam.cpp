@@ -98,12 +98,13 @@ int main(int argc, char* argv[] ) {
 
 void drawMatch(cv::Mat image, cv::Mat points) {
 	int n = points.rows;
+	cv::Point pt1;
+	cv::Point pt2;
 	for(int i = 0 ; i < n ; i++)
 	{
-		line(image,
-			 cv::Point(points.at<float>(i, 0), points.at<float>(i, 1)),
-			 cv::Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1)),
-			 cv::Scalar(0, 0, 255), 3);
+		pt1 = cv::Point(points.at<float>(i, 0), points.at<float>(i, 1)));
+		pt2 = cv::Point(points.at<float>((i + 1) % n, 0), points.at<float>((i + 1) % n, 1));
+		line(image, pt1, pt2, cv::Scalar(0, 0, 255), 3);
 	}
 }
 
